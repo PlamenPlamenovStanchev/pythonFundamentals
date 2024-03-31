@@ -1,0 +1,46 @@
+# phonebook = {}
+# while True:
+#     command = input()
+#     if command == "search":
+#         break
+#     name, number = command.split("-")
+#     phonebook[name] = number
+# while True:
+#     name_to_search = input()
+#     if name_to_search == "stop":
+#         break
+#     if name_to_search in phonebook:
+#         print(f"{name} -> {number}")
+#     else:
+#         print(f"Contact {name} does not exist.")
+
+
+def fill_phonebook():
+    phonebook = {}
+
+    while True:
+        entry = input().split("-")
+        if len(entry) == 1:
+            return phonebook, int(entry[0])
+
+        name, number = entry
+        phonebook[name] = number
+
+def search_contact(phonebook, name):
+    if name in phonebook:
+        print(f"{name} -> {phonebook[name]}")
+    else:
+        print(f"Contact {name} does not exist.")
+
+def main():
+    phonebook, number = fill_phonebook()
+
+    for _ in range(number):
+        search_name = input()
+        search_contact(phonebook, search_name)
+
+if __name__ == '__main__':
+    main()
+
+
+
